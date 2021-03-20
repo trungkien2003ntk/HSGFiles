@@ -1,61 +1,65 @@
-uses crt;
-var i,n,j:integer;
-    f:text;
-    s:string;
 
-const inp='d:\Kien\hsgdata\Sinhnhiphan.txt';
+Uses crt;
 
-function dk(s:string):boolean;
-var i,count:integer;
-begin
-    dk:=true;
-    count:=0;
-    for i:=1 to length(s) do
-        if s[i]='0' then
-            begin
-                count:=1;
+Var n,j: integer;
+  f: text;
+  s: string;
+
+Const inp = 'Sinhnhiphan.txt';
+
+Function dk(s:String): boolean;
+
+Var i,count: integer;
+Begin
+  dk := true;
+  count := 0;
+  For i:=1 To length(s) Do
+    If s[i]='0' Then
+      Begin
+        count := 1;
+        break;
+      End;
+  If count=1 Then dk := false;
+End;
+
+Procedure xuli;
+
+Var i: integer;
+Begin
+  assign(f,inp);
+  rewrite(f);
+  s := '';
+  For i:=1 To n Do
+    s := s+'0';
+  writeln(f,s);
+
+  Repeat
+    For i:=n Downto 1 Do
+      Begin
+        If s[i]='0' Then
+          Begin
+            s[i] := '1';
+            If i<>n Then
+              Begin
+                For j:=i+1 To n Do
+                  s[j] := '0';
+                writeln(f,s);
                 break;
-            end;
-    if count=1 then dk:=false;
-end;
-
-procedure xuli;
-var i:integer;
-begin
-    assign(f,inp);
-    rewrite(f);
-    s:='';
-    for i:=1 to n do
-        s:=s+'0';
-    writeln(f,s);
-
-    repeat
-        for i:=n downto 1 do
-          begin
-            if s[i]='0' then
-                begin
-                    s[i]:='1';
-                    if i<>n then
-                       begin
-                        for j:=i+1 to n do
-                            s[j]:='0';
-                        writeln(f,s);
-                        break;
-                       end
-                    else writeln(f,s);
+              End
+            Else writeln(f,s);
 
 
-                end;
+          End;
 
-          end;
-    until dk(s)=true;
-    close(f);
-end;
+      End;
+  Until dk(s)=true;
+  close(f);
+End;
 
-begin
-    clrscr;
-    write('Nhap n: ');
-    readln(n);
-    xuli;
-    readln;
-end.
+Begin
+  clrscr;
+  write('Nhap n: ');
+  readln(n);
+  xuli;
+  readln;
+End.
