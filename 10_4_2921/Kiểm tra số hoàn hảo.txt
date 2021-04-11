@@ -1,0 +1,3 @@
+Số hoàn hảo là số có tổng các ước số của nó bằng chính nó. Ví dụ số 6 có các ước là 1,2,3 và
+tổng của chúng bằng 6, vậy 6 chính là một số Hoàn hảo.
+-Yêu cầu: Viết chương trình nhập vào 1 số nguyên dương và kiểm tra xem nó có phải là số hoàn hảo hay không.
